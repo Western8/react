@@ -1,6 +1,11 @@
+import Result from "./Result";
+
 function Bottom() {
   return <div>
-          <div>Results</div>
+          <Result />
+          <Result />
+          <Result />
+          <Result />
         </div>;
 }
 
