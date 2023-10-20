@@ -1,0 +1,6 @@
+.top {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  border: 1px solid var(--color-border);
+}

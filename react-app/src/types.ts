@@ -8,7 +8,15 @@ export type ApiResult = {
   eye_color: string;
 };
 
-export type Results = {
+export type SearchResult = {
   name: string;
   desc: string;
+};
+
+export type SearchResults = {
+  searchResults: SearchResult[]
+};
+
+export type RunSearch = {
+  runSearch: (value: string) => void;
 };

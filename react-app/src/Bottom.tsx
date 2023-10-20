@@ -1,12 +1,22 @@
-import Result from "./Result";
+import React from 'react';
+import Result from './Result';
+import { SearchResult, SearchResults } from './types';
+import './Bottom.css';
 
-function Bottom() {
-  return <div>
-          <Result />
-          <Result />
-          <Result />
-          <Result />
-        </div>;
+class Bottom extends React.Component<SearchResults, {}> {
+  constructor(props: SearchResults) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className="bottom">
+        {this.props.searchResults.map((item: SearchResult) => (
+          <Result name={item.name} desc={item.desc} />
+        ))}
+      </div>
+    );
+  }
 }
 
 export default Bottom;

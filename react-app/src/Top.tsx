@@ -1,38 +1,49 @@
-// import React from "react";
-import { ApiResult, Results } from "./types";
+import React from 'react';
+import { RunSearch } from './types';
+import './Top.css';
 
-function Top() {
+class Top extends React.Component<RunSearch, {}> {
+  inputValue: HTMLInputElement | null = null;
 
-  let inputValue: HTMLInputElement | null;
-
-  async function runSearch() {
-
-    const url = `https://swapi.dev/api/people/?search=${inputValue?.value}`;
-    const response = await fetch(url);
-    const result = await response.json();
-
-    const results: Results = result.results.map((item: ApiResult) => {
-      const res = {
-        name: item.name,
-        desc: '',
-      };
-      const desc: string[] = [];
-      desc.push(`Birth year: ${item.birth_year}`);
-      desc.push(`Height: ${item.height}`);
-      desc.push(`Mass: ${item.mass}`);
-      desc.push(`Skin color: ${item.skin_color}`);
-      desc.push(`Hair color: ${item.hair_color}`);
-      desc.push(`Eye color: ${item.eye_color}`);
-      res.desc = desc.join(', ');
-      return res;
-    });
-    console.log('results', results);
+  constructor(props: RunSearch) {
+    super(props);
+    this.handleInput = this.handleInput.bind(this);
   }
 
-  return <div>
-          <input ref={node => { inputValue = node; }} placeholder="Enter search text"/>
-          <button onClick={runSearch}>Search</button>
-        </div>;
+  componentDidMount(): void {
+    const item = localStorage.getItem('inputValue');
+    if (item && this.inputValue) {
+      this.inputValue.value = JSON.parse(item);
+    }
+    this.props.runSearch(this.inputValue?.value ? this.inputValue?.value : '');
+  }
+
+  handleInput() {
+    if (this.inputValue && this.inputValue.value) {
+      localStorage.setItem('inputValue', JSON.stringify(this.inputValue.value));
+    } else {
+      localStorage.setItem('inputValue', '');
+    }
+  }
+
+  render() {
+    return (
+      <div className="top">
+        <input
+          ref={(node) => {
+            this.inputValue = node;
+          }}
+          onChange={this.handleInput}
+          placeholder="Enter search text"
+        />
+        <button
+          onClick={() => this.props.runSearch(this.inputValue?.value ? this.inputValue?.value : '')}
+        >
+          Search
+        </button>
+      </div>
+    );
+  }
 }
 
 export default Top;
