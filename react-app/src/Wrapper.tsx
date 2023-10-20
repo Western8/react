@@ -1,12 +1,12 @@
 import React from 'react';
 import Top from './Top';
 import Bottom from './Bottom';
-import { ApiResult, SearchResults } from './types';
+import { ApiResult, SearchResults, DefaultProps } from './types';
 import './Wrapper.css';
 
 class Wrapper extends React.Component {
-  constructor() {
-    super({});
+  constructor(props: DefaultProps) {
+    super(props);
   }
 
   state = {
@@ -17,7 +17,7 @@ class Wrapper extends React.Component {
     let url = `https://swapi.dev/api/people/`;
     if (value !== '') {
       url = `${url}?search=${value}`;
-    } 
+    }
 
     fetch(url)
       .then((response) => response.json())
@@ -25,6 +25,7 @@ class Wrapper extends React.Component {
         const results: SearchResults = result.results.map((item: ApiResult) => {
           const res = {
             name: item.name,
+            url: item.url,
             desc: '',
           };
           const desc: string[] = [];
@@ -41,10 +42,14 @@ class Wrapper extends React.Component {
       });
   };
 
+  testError(): void {
+    throw new Error('Ooops... something went wrong.');
+  }
+
   render() {
     return (
       <div className="wrapper">
-        <Top runSearch={this.runSearch}></Top>
+        <Top runSearch={this.runSearch} testError={this.testError}></Top>
         <Bottom searchResults={this.state.results}></Bottom>
       </div>
     );

@@ -12,7 +12,7 @@ class Bottom extends React.Component<SearchResults, {}> {
     return (
       <div className="bottom">
         {this.props.searchResults.map((item: SearchResult) => (
-          <Result name={item.name} desc={item.desc} />
+          <Result key={item.url} name={item.name} desc={item.desc} />
         ))}
       </div>
     );

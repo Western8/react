@@ -1,10 +1,13 @@
 import './App.css';
 import Wrapper from './Wrapper';
+import ErrorBoundary from './ErrorBoundary';
 
 function App() {
   return (
     <>
-      <Wrapper />
+      <ErrorBoundary>
+        <Wrapper />
+      </ErrorBoundary>
     </>
   );
 }

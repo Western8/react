@@ -1,3 +1,6 @@
+export type DefaultProps = {
+}
+
 export type ApiResult = {
   name: string;
   height: string;
@@ -6,9 +9,11 @@ export type ApiResult = {
   hair_color: string;
   skin_color: string;
   eye_color: string;
+  url: string;
 };
 
 export type SearchResult = {
+  url: string;
   name: string;
   desc: string;
 };
@@ -19,4 +24,5 @@ export type SearchResults = {
 
 export type RunSearch = {
   runSearch: (value: string) => void;
+  testError: () => void;
 };

@@ -16,6 +16,7 @@ class Top extends React.Component<RunSearch, {}> {
       this.inputValue.value = JSON.parse(item);
     }
     this.props.runSearch(this.inputValue?.value ? this.inputValue?.value : '');
+    // this.props.testError();
   }
 
   handleInput() {
@@ -40,6 +41,11 @@ class Top extends React.Component<RunSearch, {}> {
           onClick={() => this.props.runSearch(this.inputValue?.value ? this.inputValue?.value : '')}
         >
           Search
+        </button>
+        <button
+          onClick={() => this.props.testError()}
+        >
+          Test Error
         </button>
       </div>
     );
