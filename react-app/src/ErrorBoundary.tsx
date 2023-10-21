@@ -13,7 +13,7 @@ class ErrorBoundary extends React.Component<ErrorProps, ErrorState> {
     super(props);
     this.state = { hasError: false };
   }
-/*
+  /*
   state: State = {
     hasError: false
   };
@@ -26,7 +26,7 @@ class ErrorBoundary extends React.Component<ErrorProps, ErrorState> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error("Uncaught error   :   ", error, errorInfo);
+    console.error('Uncaught error   :   ', error, errorInfo);
   }
 
   render() {

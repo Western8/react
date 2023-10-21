@@ -1,5 +1,4 @@
-export type DefaultProps = {
-}
+export type DefaultProps = {};
 
 export type ApiResult = {
   name: string;
@@ -19,7 +18,7 @@ export type SearchResult = {
 };
 
 export type SearchResults = {
-  searchResults: SearchResult[]
+  searchResults: SearchResult[];
 };
 
 export type RunSearch = {

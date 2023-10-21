@@ -42,11 +42,7 @@ class Top extends React.Component<RunSearch, {}> {
         >
           Search
         </button>
-        <button
-          onClick={() => this.props.testError()}
-        >
-          Test Error
-        </button>
+        <button onClick={() => this.props.testError()}>Test Error</button>
       </div>
     );
   }
