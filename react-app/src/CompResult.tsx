@@ -1,8 +1,8 @@
-import { SearchResult } from './types';
+import { Result } from './types';
 import './Bottom.css';
 
-function Result(props: SearchResult) {
-  // static defaultProps: Partial<SearchResult>;
+function CompResult(props: Result) {
+  // static defaultProps: Partial<Result>;
 
   return (
     <div className="result">
@@ -12,6 +12,6 @@ function Result(props: SearchResult) {
   );
 }
 
-// Result.defaultProps = { name: '', desc: '' };
+CompResult.defaultProps = { url: '', name: '', desc: '' };
 
-export default Result;
+export default CompResult;

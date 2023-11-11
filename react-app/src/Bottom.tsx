@@ -1,13 +1,15 @@
-import Result from './Result';
-import { SearchResult, SearchResults } from './types';
+import CompResult from './CompResult';
+import { Result, PropsBottom } from './types';
 import './Bottom.css';
+import Pagination from './Pagination';
 
-function Bottom(props: SearchResults) {
+function Bottom(props: PropsBottom) {
   return (
     <div className="bottom">
-      {props.searchResults.map((item: SearchResult) => (
-        <Result url={item.url} name={item.name} desc={item.desc} />
+      {props.results.map((item: Result) => (
+        <CompResult url={item.url} name={item.name} desc={item.desc} />
       ))}
+      <Pagination />
     </div>
   );
 }

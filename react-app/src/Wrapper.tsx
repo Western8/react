@@ -1,25 +1,32 @@
 import React from 'react';
 import Top from './Top';
 import Bottom from './Bottom';
-import { ApiResult, SearchResult } from './types';
-// import { ApiResult, SearchResults, DefaultProps } from './types';
+import { ApiResult, Result, SearchResults } from './types';
+import { useParams } from 'react-router-dom';
 import './Wrapper.css';
 
 function Wrapper() {
 
-  const initSearchResults: SearchResult[] = [];
-  const [results, setState] = React.useState(initSearchResults);
+  const params = useParams();
+  const page: string = params.page ? params.page : '1';
+
+  const initSearchResults: SearchResults = { results: [] };
+  const [searchResults, setState] = React.useState(initSearchResults);
 
   function runSearch(value: string): void {
-    let url = `https://swapi.dev/api/people/`;
+    let url = `https://swapi.dev/api/people/?`;
+    const urlParams: String[] = [];
     if (value !== '') {
-      url = `${url}?search=${value}`;
+      urlParams.push(`search=${value}`);
+
     }
+    urlParams.push(`page=${page}`);
+    url = `${url}${urlParams.join('&')}`;
 
     fetch(url)
       .then((response) => response.json())
       .then((result) => {
-        const results: SearchResult[] = result.results.map((item: ApiResult) => {
+        const results: Result[] = result.results.map((item: ApiResult) => {
           const res = {
             name: item.name,
             url: item.url,
@@ -35,7 +42,10 @@ function Wrapper() {
           res.desc = desc.join(', ');
           return res;
         });
-        setState(results);
+        const newSearchResults: SearchResults = {
+          results: results,
+        };
+        setState(newSearchResults);
       });
   };
 
@@ -46,7 +56,7 @@ function Wrapper() {
   return (
     <div className="wrapper">
       <Top runSearch={runSearch} testError={testError}></Top>
-      <Bottom searchResults={results}></Bottom>
+      <Bottom results={searchResults.results} page={page}></Bottom>
     </div>
   );
 }

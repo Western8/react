@@ -11,17 +11,23 @@ export type ApiResult = {
   url: string;
 };
 
-export type SearchResult = {
+export type Result = {
   url: string;
   name: string;
   desc: string;
 };
 
 export type SearchResults = {
-  searchResults: SearchResult[];
+  results: Result[];
+  // prev: string;
+  // next: string;
 };
 
 export type RunSearch = {
   runSearch: (value: string) => void;
   testError: () => void;
 };
+
+export type PropsWrapper = {
+  page: string;
+}
