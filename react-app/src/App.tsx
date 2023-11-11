@@ -20,7 +20,6 @@ function AppRouter() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/1111" element={<div>1111111111111111111111111</div>} />
           <Route path=":page" element={<Wrapper/>} />
           <Route path="*" element={<Wrapper page="0" />} />
         </Routes>

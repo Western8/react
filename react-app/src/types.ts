@@ -31,3 +31,12 @@ export type RunSearch = {
 export type PropsWrapper = {
   page: string;
 }
+
+export type PropsBottom = {
+  results: Result[];
+  page: string;  
+}
+
+export type PropsPagination = {
+  page: string;  
+}

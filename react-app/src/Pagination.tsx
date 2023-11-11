@@ -1,27 +1,17 @@
 import './Pagination.css';
-
 import { Link } from 'react-router-dom';
+import { PropsPagination } from './types';
 
-type TypeNav = {
-  next: string
-}
+function Pagination(props: PropsPagination) {
+  const pagePrev = +props.page - 1;
+  const pageNext = +props.page + 1;  
 
-function Nav(props: TypeNav) {
   return (
-    <nav>
-      <Link to={props.next}>Next</Link>
-    </nav>
-  );
-}
-
-function Pagination() {
-  return (
-    <div className="bottom">
-      <div className='page-btns'>
-        <button>Prev</button>
-        {/* <NavLink to={`${props.next}`}>Next</NavLink> */}
-        {/* <Nav next={props.next}></Nav> */}
-      </div>
+    <div className="page-btns">
+      <nav>
+        <Link to={`/${pagePrev}`} className="page-btn">Prev</Link>
+        <Link to={`/${pageNext}`} className="page-btn">Next</Link>
+      </nav>
     </div>
   );
 }

@@ -9,7 +9,7 @@ function Bottom(props: PropsBottom) {
       {props.results.map((item: Result) => (
         <CompResult url={item.url} name={item.name} desc={item.desc} />
       ))}
-      <Pagination />
+      <Pagination page={props.page}/>
     </div>
   );
 }
