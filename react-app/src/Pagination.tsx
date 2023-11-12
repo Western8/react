@@ -9,8 +9,8 @@ function Pagination(props: PropsPagination) {
   return (
     <div className="page-btns">
       <nav>
-        <Link to={`/${pagePrev}`} className="page-btn">Prev</Link>
-        <Link to={`/${pageNext}`} className="page-btn">Next</Link>
+        <Link to={`/page/${pagePrev}`} className="page-btn">Prev</Link>
+        <Link to={`/page/${pageNext}`} className="page-btn">Next</Link>
       </nav>
     </div>
   );

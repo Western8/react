@@ -12,9 +12,9 @@ export type ApiResult = {
 };
 
 export type Result = {
-  url: string;
   name: string;
   desc: string;
+  url: string;  
 };
 
 export type SearchResults = {
@@ -35,6 +35,12 @@ export type PropsWrapper = {
 export type PropsBottom = {
   results: Result[];
   page: string;  
+}
+
+export type PropsResult = {
+  result: Result;
+  page: string;
+  // getDetails: (url: string) => void; 
 }
 
 export type PropsPagination = {

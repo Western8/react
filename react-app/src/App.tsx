@@ -1,14 +1,14 @@
 import './App.css';
 import Wrapper from './Wrapper';
+import { Details } from './Bottom';
 import ErrorBoundary from './ErrorBoundary';
 import { Routes, Route } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Navigate } from 'react-router-dom';
 
 function App() {
   return (
     <>
       <ErrorBoundary>
-        {/* <Wrapper /> */}
         <AppRouter />
       </ErrorBoundary>
     </>
@@ -20,8 +20,10 @@ function AppRouter() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path=":page" element={<Wrapper/>} />
-          <Route path="*" element={<Wrapper page="0" />} />
+          <Route path="/page/:page" element={<Wrapper/>}>
+            <Route path="person/:person" element={<Details />} />
+          </Route>
+          <Route path="*" element={<Navigate to="/page/1" />} />
         </Routes>
       </BrowserRouter>
     </div>
@@ -29,5 +31,3 @@ function AppRouter() {
 }
 
 export default App;
-
-// <Pagination results={searchResults.results} prev={searchResults.prev} next={searchResults.next}/>

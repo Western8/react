@@ -1,14 +1,17 @@
-import { Result } from './types';
+import { PropsResult } from './types';
+import { Link } from 'react-router-dom';
 import './Bottom.css';
 
-function CompResult(props: Result) {
+function CompResult(props: PropsResult) {
   // static defaultProps: Partial<Result>;
 
+  const idPerson = props.result.url.split('/').at(-2);
+
   return (
-    <div className="result">
-      <div className="result-name">{props.name}</div>
-      <div className="result-desc">{props.desc}</div>
-    </div>
+    <Link to={`/page/${props.page}/person/${idPerson}`} className="result">
+      <div className="result-name">{props.result.name}</div>
+      <div className="result-desc">{props.result.url}</div>
+    </Link>
   );
 }
 

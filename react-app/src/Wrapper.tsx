@@ -39,7 +39,7 @@ function Wrapper() {
           desc.push(`Skin color: ${item.skin_color}`);
           desc.push(`Hair color: ${item.hair_color}`);
           desc.push(`Eye color: ${item.eye_color}`);
-          res.desc = desc.join(', ');
+          // res.desc = desc.join(', ');
           return res;
         });
         const newSearchResults: SearchResults = {
