@@ -11,17 +11,38 @@ export type ApiResult = {
   url: string;
 };
 
-export type SearchResult = {
-  url: string;
+export type Result = {
   name: string;
   desc: string;
+  url: string;  
 };
 
 export type SearchResults = {
-  searchResults: SearchResult[];
+  results: Result[];
+  // prev: string;
+  // next: string;
 };
 
 export type RunSearch = {
   runSearch: (value: string) => void;
   testError: () => void;
 };
+
+export type PropsWrapper = {
+  page: string;
+}
+
+export type PropsBottom = {
+  results: Result[];
+  page: string;  
+}
+
+export type PropsResult = {
+  result: Result;
+  page: string;
+  // getDetails: (url: string) => void; 
+}
+
+export type PropsPagination = {
+  page: string;  
+}

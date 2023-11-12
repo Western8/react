@@ -1,28 +1,32 @@
 import React from 'react';
 import Top from './Top';
 import Bottom from './Bottom';
-import { ApiResult, SearchResults, DefaultProps } from './types';
+import { ApiResult, Result, SearchResults } from './types';
+import { useParams } from 'react-router-dom';
 import './Wrapper.css';
 
-class Wrapper extends React.Component {
-  constructor(props: DefaultProps) {
-    super(props);
-  }
+function Wrapper() {
 
-  state = {
-    results: [],
-  };
+  const params = useParams();
+  const page: string = params.page ? params.page : '1';
 
-  runSearch = (value: string): void => {
-    let url = `https://swapi.dev/api/people/`;
+  const initSearchResults: SearchResults = { results: [] };
+  const [searchResults, setState] = React.useState(initSearchResults);
+
+  function runSearch(value: string): void {
+    let url = `https://swapi.dev/api/people/?`;
+    const urlParams: String[] = [];
     if (value !== '') {
-      url = `${url}?search=${value}`;
+      urlParams.push(`search=${value}`);
+
     }
+    urlParams.push(`page=${page}`);
+    url = `${url}${urlParams.join('&')}`;
 
     fetch(url)
       .then((response) => response.json())
       .then((result) => {
-        const results: SearchResults = result.results.map((item: ApiResult) => {
+        const results: Result[] = result.results.map((item: ApiResult) => {
           const res = {
             name: item.name,
             url: item.url,
@@ -35,25 +39,26 @@ class Wrapper extends React.Component {
           desc.push(`Skin color: ${item.skin_color}`);
           desc.push(`Hair color: ${item.hair_color}`);
           desc.push(`Eye color: ${item.eye_color}`);
-          res.desc = desc.join(', ');
+          // res.desc = desc.join(', ');
           return res;
         });
-        this.setState({ results: results });
+        const newSearchResults: SearchResults = {
+          results: results,
+        };
+        setState(newSearchResults);
       });
   };
 
-  testError(): void {
+  function testError(): void {
     throw new Error('Ooops... something went wrong.');
   }
 
-  render() {
-    return (
-      <div className="wrapper">
-        <Top runSearch={this.runSearch} testError={this.testError}></Top>
-        <Bottom searchResults={this.state.results}></Bottom>
-      </div>
-    );
-  }
+  return (
+    <div className="wrapper">
+      <Top runSearch={runSearch} testError={testError}></Top>
+      <Bottom results={searchResults.results} page={page}></Bottom>
+    </div>
+  );
 }
 
 export default Wrapper;

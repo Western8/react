@@ -60,6 +60,10 @@ input {
   font-size: 1.2em;
 }
 
+.hidden {
+  display: none;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
