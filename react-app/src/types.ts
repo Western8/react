@@ -46,3 +46,10 @@ export type PropsResult = {
 export type PropsPagination = {
   page: string;  
 }
+
+export type TGlobalContext = {
+  contInputValue: string;
+  setInputValue: (value: string) => void;
+  contResults: Result[];
+  setResults: (value: Result[]) => void;
+}
