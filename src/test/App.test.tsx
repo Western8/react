@@ -16,7 +16,7 @@ describe('Renders App React', async () => {
   it('Should render App React', async () => {
       // Setup
       render(<App />);
-      const input = await screen.getByPlaceholderText('Enter search text1');
+      const input = await screen.getByPlaceholderText('Enter search text');
       // Expectations
       expect(input).not.toBeNull();
   });

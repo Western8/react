@@ -10,8 +10,7 @@
     "fix": "eslint . --ext ts,tsx --fix",
     "preview": "vite preview",
     "test": "vitest",
-    "coverage": "vitest run --coverage",
-    "precommit": "npm test"
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "react": "^18.2.0",
