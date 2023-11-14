@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "precommit": "npm test"
+    "precommit": "npm test" 
   },
   "dependencies": {
     "react": "^18.2.0",
