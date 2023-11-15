@@ -1,11 +1,12 @@
 // Imports
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
+import { mockResults } from './mocks';
 
 // To Test
 import Bottom from '../Bottom';
 import GlobalContext from '../Context';
-import { BrowserRouter } from 'react-router-dom';
 
 
 // Tests
@@ -15,11 +16,7 @@ describe('Renders Bottom correcttly', async () => {
     const setInputValue = () => { };
     const setResults = () => { };
     const contInputValue = '';
-    const contResults = [];
-    for (let i = 0; i < 10; i++) {
-      const result = { name: '', desc: '', url: i.toString() };
-      contResults.push(result);
-    }
+    const contResults = mockResults;
     render(
       <GlobalContext.Provider value={{ contInputValue, setInputValue, contResults, setResults }}>
         <BrowserRouter>
