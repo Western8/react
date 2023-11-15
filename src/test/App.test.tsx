@@ -5,13 +5,13 @@ import { render, screen } from '@testing-library/react';
 // To Test
 import App from '../App';
 
+// Tests
 describe('Renders App correctly', async () => {
     it('Should render App correctly', async () => {
         expect(true).toBeTruthy();
     });
 });
 
-// Tests
 describe('Renders App React', async () => {
   it('Should render App React', async () => {
       // Setup
