@@ -22,7 +22,7 @@ function Bottom(props: PropsBottom) {
         ))}
         <Pagination page={props.page} />
       </div>
-      <div className={`bottom-details ${showDetails ? '' : 'hidden'}`}>
+      <div className={`bottom-details${showDetails ? '' : ' hidden'}`}>
         <Outlet context={setShowDetails} />
       </div>
     </div>
