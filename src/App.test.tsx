@@ -3,7 +3,7 @@ import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
 // To Test
-import App from '../App';
+import App from './App';
 
 // Tests
 describe('Renders App correctly', async () => {

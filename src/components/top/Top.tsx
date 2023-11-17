@@ -1,7 +1,7 @@
 import React from 'react';
-import { RunSearch } from './types';
+import { RunSearch } from '../../types';
 import './Top.css';
-import GlobalContext from './Context';
+import GlobalContext from '../../Context';
 
 function Top(props: RunSearch) {
   const inputValue = React.useRef<HTMLInputElement>(null);

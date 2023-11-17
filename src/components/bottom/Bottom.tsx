@@ -1,9 +1,9 @@
-import { Result, PropsBottom } from './types';
-import CompResult from './CompResult';
-import Pagination from './Pagination';
+import { Result, PropsBottom } from '../../types';
+import CompResult from '../compResult/CompResult';
+import Pagination from '../pagination/Pagination';
 import React from 'react';
 import { Outlet, useOutletContext, useParams } from 'react-router-dom';
-import GlobalContext from './Context';
+import GlobalContext from '../../Context';
 import './Bottom.css';
 
 function Bottom(props: PropsBottom) {

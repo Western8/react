@@ -1,6 +1,6 @@
-import { PropsResult } from './types';
+import { PropsResult } from '../../types';
 import { Link } from 'react-router-dom';
-import './Bottom.css';
+import '../bottom/Bottom.css';
 
 function CompResult(props: PropsResult) {
   const idPerson = props.result.url.split('/').at(-2);

@@ -1,7 +1,7 @@
 import './App.css';
-import Wrapper from './Wrapper';
-import { Details } from './Bottom';
-import ErrorBoundary from './ErrorBoundary';
+import Wrapper from './components/wrapper/Wrapper';
+import { Details } from './components/bottom/Bottom';
+import ErrorBoundary from './components/errorBoundary/ErrorBoundary';
 import React from 'react';
 import { Routes, Route } from 'react-router';
 import { BrowserRouter, Navigate } from 'react-router-dom';

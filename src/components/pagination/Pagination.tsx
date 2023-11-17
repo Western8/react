@@ -1,6 +1,6 @@
 import './Pagination.css';
 import { Link } from 'react-router-dom';
-import { PropsPagination } from './types';
+import { PropsPagination } from '../../types';
 
 function Pagination(props: PropsPagination) {
   const pagePrev = +props.page - 1;

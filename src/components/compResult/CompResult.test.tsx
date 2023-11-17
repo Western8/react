@@ -2,10 +2,10 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { mockResults } from './mocks';
+import { mockResults } from '../../test/mocks';
 
 // To Test
-import CompResult from '../CompResult';
+import CompResult from './CompResult';
 
 // Tests
 describe('Test Card (CompResult) component', async () => {

@@ -2,12 +2,12 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { mockResults } from './mocks';
+import { mockResults } from '../../test/mocks';
 
 // To Test
-import Bottom from '../Bottom';
-import { Details } from '../Bottom';
-import GlobalContext from '../Context';
+import Bottom from './Bottom';
+import { Details } from './Bottom';
+import GlobalContext from '../../Context';
 
 const setInputValue = () => { };
 const setResults = () => { };

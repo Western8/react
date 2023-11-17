@@ -1,9 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import Top from './Top';
-import Bottom from './Bottom';
-import { ApiResult, Result, SearchResults } from './types';
-import GlobalContext from './Context';
+import Top from '../top/Top';
+import Bottom from '../bottom/Bottom';
+import { ApiResult, Result, SearchResults } from '../../types';
+import GlobalContext from '../../Context';
 import './Wrapper.css';
 
 function Wrapper() {
