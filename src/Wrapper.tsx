@@ -1,8 +1,9 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import Top from './Top';
 import Bottom from './Bottom';
 import { ApiResult, Result, SearchResults } from './types';
-import { useParams } from 'react-router-dom';
+import GlobalContext from './Context';
 import './Wrapper.css';
 
 function Wrapper() {
@@ -12,6 +13,7 @@ function Wrapper() {
 
   const initSearchResults: SearchResults = { results: [] };
   const [searchResults, setState] = React.useState(initSearchResults);
+  const { setResults } = React.useContext(GlobalContext);
 
   function runSearch(value: string): void {
     let url = `https://swapi.dev/api/people/?`;
@@ -46,6 +48,7 @@ function Wrapper() {
           results: results,
         };
         setState(newSearchResults);
+        setResults(results);
       });
   };
 

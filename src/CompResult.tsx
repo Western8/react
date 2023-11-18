@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import './Bottom.css';
 
 function CompResult(props: PropsResult) {
-  // static defaultProps: Partial<Result>;
-
   const idPerson = props.result.url.split('/').at(-2);
 
   return (

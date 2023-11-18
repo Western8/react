@@ -1,12 +1,14 @@
-import CompResult from './CompResult';
 import { Result, PropsBottom } from './types';
-import './Bottom.css';
+import CompResult from './CompResult';
 import Pagination from './Pagination';
 import React from 'react';
 import { Outlet, useOutletContext, useParams } from 'react-router-dom';
+import GlobalContext from './Context';
+import './Bottom.css';
 
 function Bottom(props: PropsBottom) {
   const [showDetails, setShowDetails] = React.useState(false);
+  const contResults = React.useContext(GlobalContext).contResults;
 
   function changeShowDetails(): void {
     setShowDetails(!showDetails);
@@ -15,12 +17,12 @@ function Bottom(props: PropsBottom) {
   return (
     <div className="bottom">
       <div className="bottom-list" onClick={changeShowDetails}>
-        {props.results.map((item: Result) => (
-          <CompResult result={item} page={props.page} key={item.url}/>
+        {contResults.map((item: Result) => (
+          <CompResult result={item} page={props.page} key={item.url} />
         ))}
         <Pagination page={props.page} />
       </div>
-      <div className={`bottom-details ${showDetails ? '' : 'hidden'}`}>
+      <div className={`bottom-details${showDetails ? '' : ' hidden'}`}>
         <Outlet context={setShowDetails} />
       </div>
     </div>
