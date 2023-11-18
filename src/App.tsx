@@ -1,25 +1,19 @@
-import './App.css';
-import Wrapper from './components/wrapper/Wrapper';
-import { Details } from './components/bottom/Bottom';
-import ErrorBoundary from './components/errorBoundary/ErrorBoundary';
-import React from 'react';
 import { Routes, Route } from 'react-router';
 import { BrowserRouter, Navigate } from 'react-router-dom';
-import { Result } from './types';
-import GlobalContext from './Context';
+import { Provider } from 'react-redux';
+import ErrorBoundary from './components/errorBoundary/ErrorBoundary';
+import store from './components/store/store';
+import Wrapper from './components/wrapper/Wrapper';
+import { Details } from './components/details/details';
+import './App.css';
 
 function App() {
-
-  const [contInputValue, setInputValue] = React.useState('');
-  const initResults: Result[] = [];
-  const [contResults, setResults] = React.useState(initResults);
-
   return (
     <>
       <ErrorBoundary>
-        <GlobalContext.Provider value={{ contInputValue, setInputValue, contResults, setResults }}>
+        <Provider store={store}>
           <AppRouter />
-        </GlobalContext.Provider>
+        </Provider>
       </ErrorBoundary>
     </>
   );
