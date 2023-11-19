@@ -36,13 +36,13 @@ export type RunSearch = {
 };
 
 export interface IPropsResult {
-  result: Result,
-  page: string,
-};
+  result: Result;
+  page: string;
+}
 
 export interface IPropsPagination {
-  page: string,
-};
+  page: string;
+}
 
 export type StateSlice = {
   inputValue: string;

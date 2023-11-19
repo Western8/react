@@ -33,7 +33,7 @@ export function renderWithProviders(
   function Wrapper({ children }: PropsWithChildren): JSX.Element {
     return (
       // <BrowserRouter>
-        <Provider store={store}>{children}</Provider>
+      <Provider store={store}>{children}</Provider>
       // </BrowserRouter>
     );
   }
