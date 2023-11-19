@@ -30,17 +30,6 @@ function Header(props: RunSearch) {
     }
   }
 
-  /*
-  React.useEffect((): void => {
-    const item = localStorage.getItem('inputValue');
-    if (item && inputValue.current) {
-      inputValue.current.value = JSON.parse(item);
-      dispatch(setInputValue({value: inputValue.current.value}));
-    }
-    props.runSearch(inputValue.current ? inputValue.current?.value : '');
-  });
-*/
-
   function handleInput() {
     let value = '';
     if (inputValue.current && inputValue.current.value) {

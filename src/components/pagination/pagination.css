@@ -1,7 +1,7 @@
 .page-btns {
   display: flex;
   justify-content: center;
-  font-size: 1.2em;
+  font-size: 20px;
   margin: 30px;
 }
 
@@ -10,4 +10,8 @@
   padding: 5px 10px;
   border: 2px solid #111111;
   border-radius: 5px;
+}
+
+.page-btn:hover {
+  border: 3px solid #111111;
 }

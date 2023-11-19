@@ -12,6 +12,7 @@ module.exports = {
         "prettier",
         "plugin:react-hooks/recommended",
         "plugin:prettier/recommended",
+        "plugin:react/jsx-runtime",
     ],
     "overrides": [
         {

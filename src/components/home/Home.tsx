@@ -3,10 +3,9 @@ import { useAppDispatch } from '../store/hooks';
 import { setPage } from '../store/swSlice';
 import Header from '../header/Header';
 import People from '../people/People';
-import './Wrapper.css';
-// import { apiResults } from '../../test/mocks';
+import './Home.css';
 
-function Wrapper() {
+function Home() {
   const dispatch = useAppDispatch();
 
   const params = useParams();
@@ -18,11 +17,11 @@ function Wrapper() {
   }
 
   return (
-    <div className="wrapper">
+    <div className="home">
       <Header testError={testError}></Header>
       <People />
     </div>
   );
 }
 
-export default Wrapper;
+export default Home;
