@@ -36,9 +36,9 @@ export type RunSearch = {
 };
 
 export interface IPropsResult {
-  result: Result,
-  page: string,
-};
+  result: Result;
+  page: string;
+}
 
 export type PropsPagination = {
   page: string;
