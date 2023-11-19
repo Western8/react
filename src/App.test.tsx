@@ -7,17 +7,17 @@ import App from './App';
 
 // Tests
 describe('Renders App correctly', async () => {
-    it('Should render App correctly', async () => {
-        expect(true).toBeTruthy();
-    });
+  it('Should render App correctly', async () => {
+    expect(true).toBeTruthy();
+  });
 });
 
 describe('Renders App React', async () => {
   it('Should render App React', async () => {
-      // Setup
-      render(<App />);
-      const input = await screen.getByPlaceholderText('Enter search text');
-      // Expectations
-      expect(input).not.toBeNull();
+    // Setup
+    render(<App />);
+    const input = await screen.getByPlaceholderText('Enter search text');
+    // Expectations
+    expect(input).not.toBeNull();
   });
 });

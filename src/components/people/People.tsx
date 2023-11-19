@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { RingLoader } from 'react-spinners';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { useGetResultsQuery } from '../store/swApi';
-import { setApiResults, setLoadingList, setResults } from '../store/swSlice'; 
+import { setApiResults, setLoadingList, setResults } from '../store/swSlice';
 import { Result, ApiResult } from '../../types';
 import CompResult from '../compResult/CompResult';
 import Pagination from '../pagination/Pagination';
@@ -15,10 +15,10 @@ function People() {
   const [showDetails, setShowDetails] = React.useState(false);
   function changeShowDetails(): void {
     setShowDetails(!showDetails);
-  };
+  }
 
-  const page = useAppSelector(state => state.sw.page);
-  const inputValue = useAppSelector(state => state.sw.inputValue);
+  const page = useAppSelector((state) => state.sw.page);
+  const inputValue = useAppSelector((state) => state.sw.inputValue);
   const { data, isFetching } = useGetResultsQuery({ page, inputValue });
   console.log('data apiResults ', data);
   console.log('isFetching', isFetching);
@@ -38,14 +38,14 @@ function People() {
   // const contResults = useAppSelector(state => state.sw.results);
 
   let sectionList: JSX.Element[] = [<></>];
-  const isLoadingList = useAppSelector(state => state.sw.isLoadingList);
+  const isLoadingList = useAppSelector((state) => state.sw.isLoadingList);
   if (isLoadingList) {
-    sectionList = [<RingLoader color='#541068' size='150px'/>];
+    sectionList = [<RingLoader color="#541068" size="150px" key="" />];
   } else {
     sectionList = contResults.map((item: Result) => (
       <CompResult result={item} page={page} key={item.url} />
     ));
-  };
+  }
 
   return (
     <div className="people">

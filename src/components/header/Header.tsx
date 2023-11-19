@@ -1,19 +1,25 @@
 import React, { ChangeEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { useGetResultsQuery } from '../store/swApi';
-import { setInputValue, setLimit, setResults, setApiResults, setLoadingList } from '../store/swSlice'; 
+import {
+  setInputValue,
+  setLimit,
+  setResults,
+  setApiResults,
+  setLoadingList,
+} from '../store/swSlice';
 import { RunSearch } from '../../types';
 import './Header.css';
 
 function Header(props: RunSearch) {
   const dispatch = useAppDispatch();
-  const [stateLimit, setStateLimit] = React.useState("10");
+  const [stateLimit, setStateLimit] = React.useState('10');
 
   const inputValue = React.useRef<HTMLInputElement>(null);
   const select = React.useRef<HTMLSelectElement>(null);
 
-  const page = useAppSelector(state => state.sw.page);
-  const stateInputValue = useAppSelector(state => state.sw.inputValue);
+  const page = useAppSelector((state) => state.sw.page);
+  const stateInputValue = useAppSelector((state) => state.sw.inputValue);
   const { data, isFetching } = useGetResultsQuery({ page, stateInputValue });
 
   function runSearch() {
@@ -22,7 +28,7 @@ function Header(props: RunSearch) {
       dispatch(setApiResults(data.results));
       dispatch(setResults());
     }
-  };
+  }
 
   /*
   React.useEffect((): void => {
@@ -43,30 +49,25 @@ function Header(props: RunSearch) {
     } else {
       localStorage.setItem('inputValue', '');
     }
-    dispatch(setInputValue({value}));
+    dispatch(setInputValue({ value }));
   }
 
   function handleLimit(e: ChangeEvent) {
     const target = e.target as HTMLSelectElement;
     setStateLimit(target.value);
-    dispatch(setLimit({value: target.value}));
+    dispatch(setLimit({ value: target.value }));
   }
 
   return (
     <div className="header">
-      <input
-        ref={inputValue}
-        onChange={handleInput}
-        placeholder="Enter search text"
-      />
-      <select ref={select} value={stateLimit} onChange={(e) => handleLimit(e)}>limit
+      <input ref={inputValue} onChange={handleInput} placeholder="Enter search text" />
+      <select ref={select} value={stateLimit} onChange={(e) => handleLimit(e)}>
+        limit
         <option value="10">10</option>
         <option value="20">20</option>
         <option value="30">30</option>
       </select>
-      <button onClick={runSearch}>
-        Search
-      </button>
+      <button onClick={runSearch}>Search</button>
       <button onClick={() => props.testError()}>Test Error</button>
     </div>
   );

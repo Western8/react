@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const baseUrl = `https://swapi.dev/api/people/`;
 
@@ -8,11 +8,12 @@ export const swApi = createApi({
   endpoints: (builder) => ({
     getResults: builder.query({
       query: (arg) => {
-        let { page, inputValue } = arg;
-        const urlParams: String[] = [];
+        let { page } = arg;
+        const { inputValue } = arg;
+        const urlParams: string[] = [];
         if (inputValue !== '') {
           urlParams.push(`search=${inputValue}`);
-          page = "1";
+          page = '1';
         }
         urlParams.push(`page=${page}`);
         const urlParamsStr = `?${urlParams.join('&')}`;
@@ -21,7 +22,7 @@ export const swApi = createApi({
     }),
     getDetails: builder.query({
       query: (arg) => {
-        let { idPerson } = arg;
+        const { idPerson } = arg;
         const urlParamsStr = `${idPerson}`;
         return urlParamsStr;
       },

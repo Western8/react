@@ -1,17 +1,17 @@
-// Imports
 import { describe, it, expect } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import { screen } from '@testing-library/react';
+//import { render, screen, fireEvent } from '@testing-library/react';
+
+//import { BrowserRouter } from 'react-router-dom';
+//import { Provider } from 'react-redux';
 import { renderWithProviders } from '../../test/test-utils';
 // import configureStore from 'redux-mock-store';
-import store from '../store/store';
+//import store from '../store/store';
 // import { swSlice } from "../store/swSlice";
-import { mockResults } from '../../test/mocks';
+//import { mockResults } from '../../test/mocks';
 
 // To Test
 import People from './People';
-import { RingLoader } from 'react-spinners';
 
 /*
 const setInputValue = () => { };
@@ -47,7 +47,7 @@ describe('Renders People correcttly', () => {
     const countPageBtns = 2;
     expect(links).toHaveLength(countLinks + countPageBtns);
   });
-/*
+  /*
   it('Should open a detailed card component after click on Card', async () => {
     // Setup
     render(

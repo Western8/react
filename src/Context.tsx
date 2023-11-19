@@ -1,11 +1,11 @@
-import React from "react";
-import { TGlobalContext } from "./types";
+import React from 'react';
+import { TGlobalContext } from './types';
 
 const initContext = {
   contInputValue: '',
   setInputValue: () => {},
   contResults: [],
-  setResults: () => {}
+  setResults: () => {},
 };
 const GlobalContext = React.createContext<TGlobalContext>(initContext);
 

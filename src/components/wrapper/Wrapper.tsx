@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useAppDispatch } from '../store/hooks';
-import { setPage } from '../store/swSlice'; 
+import { setPage } from '../store/swSlice';
 import Header from '../header/Header';
 import People from '../people/People';
 import './Wrapper.css';
@@ -11,8 +11,8 @@ function Wrapper() {
 
   const params = useParams();
   const page: string = params.page ? params.page : '1';
-  dispatch(setPage({page}));
-  
+  dispatch(setPage({ page }));
+
   function testError(): void {
     throw new Error('Ooops... something went wrong.');
   }

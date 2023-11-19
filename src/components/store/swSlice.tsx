@@ -2,16 +2,16 @@ import { createSlice } from '@reduxjs/toolkit';
 import { StateSlice, Result, ApiResult } from '../../types';
 
 const initialState: StateSlice = {
-    inputValue: '',
-    page: "1",
-    limit: "10",
-    isLoadingList: false,
-    isLoadingDetails: false,
-    apiResults: [],
-    results: [],
-}
+  inputValue: '',
+  page: '1',
+  limit: '10',
+  isLoadingList: false,
+  isLoadingDetails: false,
+  apiResults: [],
+  results: [],
+};
 
-const swSlice = createSlice( {
+const swSlice = createSlice({
   name: 'sw',
   initialState,
   reducers: {
@@ -43,10 +43,18 @@ const swSlice = createSlice( {
         };
       });
       state.results = results;
-    }
+    },
   },
 });
 
-export const { setInputValue, setPage, setLimit, setLoadingList, setLoadingDetails, setApiResults, setResults } = swSlice.actions;
+export const {
+  setInputValue,
+  setPage,
+  setLimit,
+  setLoadingList,
+  setLoadingDetails,
+  setApiResults,
+  setResults,
+} = swSlice.actions;
 
 export default swSlice.reducer;
