@@ -3,9 +3,9 @@ import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { useGetResultsQuery } from '../store/swApi';
 import { setInputValue, setLimit, setResults, setApiResults, setLoadingList } from '../store/swSlice'; 
 import { RunSearch } from '../../types';
-import './Top.css';
+import './Header.css';
 
-function Top(props: RunSearch) {
+function Header(props: RunSearch) {
   const dispatch = useAppDispatch();
   const [stateLimit, setStateLimit] = React.useState("10");
 
@@ -53,7 +53,7 @@ function Top(props: RunSearch) {
   }
 
   return (
-    <div className="top">
+    <div className="header">
       <input
         ref={inputValue}
         onChange={handleInput}
@@ -72,4 +72,4 @@ function Top(props: RunSearch) {
   );
 }
 
-export default Top;
+export default Header;

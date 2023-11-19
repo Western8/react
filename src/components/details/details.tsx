@@ -38,7 +38,7 @@ export function Details() {
   let sectionDetais: JSX.Element[] = [<></>];
   const isLoadingDetails = useAppSelector(state => state.sw.isLoadingDetails);
   if (isLoadingDetails) {
-    sectionDetais = [<CircleLoader color='#541068' size= '150'/>];
+    sectionDetais = [<CircleLoader color='#541068' size= '150px'/>];
   } else {
     sectionDetais = [
     <h3>{`Name: ${person.name}`}</h3>,

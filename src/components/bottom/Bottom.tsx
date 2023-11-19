@@ -40,7 +40,7 @@ function Bottom() {
   let sectionList: JSX.Element[] = [<></>];
   const isLoadingList = useAppSelector(state => state.sw.isLoadingList);
   if (isLoadingList) {
-    sectionList = [<RingLoader color='#541068' size='150'/>];
+    sectionList = [<RingLoader color='#541068' size='150px'/>];
   } else {
     sectionList = contResults.map((item: Result) => (
       <CompResult result={item} page={page} key={item.url} />

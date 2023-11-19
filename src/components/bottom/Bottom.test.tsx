@@ -2,29 +2,45 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { renderWithProviders } from '../../test/test-utils';
+// import configureStore from 'redux-mock-store';
+import store from '../store/store';
+// import { swSlice } from "../store/swSlice";
 import { mockResults } from '../../test/mocks';
 
 // To Test
 import Bottom from './Bottom';
-import { Details } from './Bottom';
-import GlobalContext from '../../Context';
+import { RingLoader } from 'react-spinners';
 
+/*
 const setInputValue = () => { };
 const setResults = () => { };
 const contInputValue = '';
 const contResults = mockResults;
+*/
+
+/*
+const mockStore: StateSlice = {
+  inputValue: '',
+  page: "1",
+  limit: "10",
+  isLoadingList: false,
+  isLoadingDetails: false,
+  apiResults: [],
+  results: mockResults,
+}
+*/
 
 // Tests
-describe('Renders Bottom correcttly', async () => {
+describe('Renders Bottom correcttly', () => {
   it('Should return a list of 10 results elements', async () => {
     // Setup
-    render(
-      <GlobalContext.Provider value={{ contInputValue, setInputValue, contResults, setResults }}>
-        <BrowserRouter>
-          <Bottom results={contResults} page="1" />
-        </BrowserRouter>
-      </GlobalContext.Provider>
-    );
+
+    // const store = mockStore({});
+
+    renderWithProviders(<Bottom />);
+
     const links = await screen.getAllByRole('link');
     // Expectations
     const countLinks = 10;
