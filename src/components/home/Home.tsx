@@ -7,7 +7,6 @@ import './Home.css';
 
 function Home() {
   const dispatch = useAppDispatch();
-
   const params = useParams();
   const page: string = params.page ? params.page : '1';
   dispatch(setPage({ page }));

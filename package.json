@@ -10,8 +10,7 @@
     "lint:fix": "eslint . --ext ts,tsx --fix",
     "preview": "vite preview",
     "test": "vitest run",
-    "coverage": "vitest run --coverage",
-    "precommit": "npm test"
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",

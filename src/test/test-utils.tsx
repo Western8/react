@@ -4,7 +4,7 @@ import type { RenderOptions } from '@testing-library/react';
 import { configureStore } from '@reduxjs/toolkit';
 import type { PreloadedState } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+// import { BrowserRouter } from 'react-router-dom';
 
 import type { AppStore, RootState } from '../components/store/store';
 // As a basic setup, import your same slice reducers
@@ -25,7 +25,6 @@ export function renderWithProviders(
     // Automatically create a store instance if no store was passed in
     store = configureStore({
       reducer: { sw: swReducer, [swApi.reducerPath]: swApi.reducer },
-      // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(swApi.middleware),
       preloadedState,
     }),
     ...renderOptions
@@ -33,9 +32,9 @@ export function renderWithProviders(
 ) {
   function Wrapper({ children }: PropsWithChildren): JSX.Element {
     return (
-      <BrowserRouter>
+      // <BrowserRouter>
         <Provider store={store}>{children}</Provider>
-      </BrowserRouter>
+      // </BrowserRouter>
     );
   }
 

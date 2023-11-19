@@ -26,8 +26,6 @@ export function Details() {
   const [person] = React.useState(initPerson);
 
   const { data, isFetching } = useGetDetailsQuery({ idPerson });
-  console.log('data apiDetails ', data);
-  console.log('isFetching details', isFetching);
   dispatch(setLoadingDetails(isFetching));
   if (!isFetching) {
     Object.assign(person, data);

@@ -35,7 +35,6 @@ function People() {
       };
     });
   }
-  // const contResults = useAppSelector(state => state.sw.results);
 
   let sectionList: JSX.Element[] = [<></>];
   const isLoadingList = useAppSelector((state) => state.sw.isLoadingList);
