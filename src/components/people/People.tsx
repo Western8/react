@@ -7,9 +7,9 @@ import { setApiResults, setLoadingList, setResults } from '../store/swSlice';
 import { Result, ApiResult } from '../../types';
 import CompResult from '../compResult/CompResult';
 import Pagination from '../pagination/Pagination';
-import './Bottom.css';
+import './People.css';
 
-function Bottom() {
+function People() {
   const dispatch = useAppDispatch();
 
   const [showDetails, setShowDetails] = React.useState(false);
@@ -48,16 +48,16 @@ function Bottom() {
   };
 
   return (
-    <div className="bottom">
-      <div className="bottom-list" onClick={changeShowDetails}>
+    <div className="people">
+      <div className="people-list" onClick={changeShowDetails}>
         {sectionList}
         <Pagination page={page} />
       </div>
-      <div className={`bottom-details${showDetails ? '' : ' hidden'}`}>
+      <div className={`people-details${showDetails ? '' : ' hidden'}`}>
         <Outlet context={setShowDetails} />
       </div>
     </div>
   );
 }
 
-export default Bottom;
+export default People;

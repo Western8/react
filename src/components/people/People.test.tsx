@@ -10,7 +10,7 @@ import store from '../store/store';
 import { mockResults } from '../../test/mocks';
 
 // To Test
-import Bottom from './Bottom';
+import People from './People';
 import { RingLoader } from 'react-spinners';
 
 /*
@@ -33,13 +33,13 @@ const mockStore: StateSlice = {
 */
 
 // Tests
-describe('Renders Bottom correcttly', () => {
+describe('Renders People correcttly', () => {
   it('Should return a list of 10 results elements', async () => {
     // Setup
 
     // const store = mockStore({});
 
-    renderWithProviders(<Bottom />);
+    renderWithProviders(<People />);
 
     const links = await screen.getAllByRole('link');
     // Expectations
@@ -53,7 +53,7 @@ describe('Renders Bottom correcttly', () => {
     render(
       <GlobalContext.Provider value={{ contInputValue, setInputValue, contResults, setResults }}>
         <BrowserRouter>
-          <Bottom results={mockResults} page="1" />
+          <People results={mockResults} page="1" />
         </BrowserRouter>
       </GlobalContext.Provider>
     );
@@ -61,7 +61,7 @@ describe('Renders Bottom correcttly', () => {
     fireEvent.click(card);
     // Expectations
     // waitFor(async () => {
-      const res = await screen.findByText('bottom-details');
+      const res = await screen.findByText('people-details');
       // console.log('screen111', screen);
       expect(res).not.toBeDefined();
     // });

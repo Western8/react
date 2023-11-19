@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useAppDispatch } from '../store/hooks';
 import { setPage } from '../store/swSlice'; 
 import Header from '../header/Header';
-import Bottom from '../bottom/Bottom';
+import People from '../people/People';
 import './Wrapper.css';
 // import { apiResults } from '../../test/mocks';
 
@@ -20,7 +20,7 @@ function Wrapper() {
   return (
     <div className="wrapper">
       <Header testError={testError}></Header>
-      <Bottom />
+      <People />
     </div>
   );
 }

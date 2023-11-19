@@ -25,8 +25,8 @@ export function renderWithProviders(
     // Automatically create a store instance if no store was passed in
     store = configureStore({
       reducer: { sw: swReducer, [swApi.reducerPath]: swApi.reducer },
-      middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(swApi.middleware),
-      // preloadedState,
+      // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(swApi.middleware),
+      preloadedState,
     }),
     ...renderOptions
   }: ExtendedRenderOptions = {}

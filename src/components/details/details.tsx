@@ -5,7 +5,6 @@ import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { useGetDetailsQuery } from '../store/swApi';
 import { setLoadingDetails } from '../store/swSlice'; 
 import { Person } from '../../types';
-// import './Bottom.css';
 
 export function Details() {
   const params = useParams();
@@ -32,7 +31,6 @@ export function Details() {
   dispatch(setLoadingDetails(isFetching));
   if (!isFetching) {
     Object.assign(person, data);
-    // setState(newPerson);
   };
 
   let sectionDetais: JSX.Element[] = [<></>];
