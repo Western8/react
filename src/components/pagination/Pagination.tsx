@@ -1,10 +1,10 @@
 import './Pagination.css';
 import { Link } from 'react-router-dom';
-import { PropsPagination } from '../../types';
+import { IPropsPagination } from '../../types';
 
-function Pagination(props: PropsPagination) {
-  const pagePrev = +props.page - 1;
-  const pageNext = +props.page + 1;
+function Pagination({ page }: IPropsPagination) {
+  const pagePrev = +page - 1;
+  const pageNext = +page + 1;
 
   return (
     <div className="page-btns">

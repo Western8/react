@@ -1,5 +1,3 @@
-// export type DefaultProps = {};
-
 export type ApiResult = {
   name: string;
   height: string;
@@ -37,9 +35,9 @@ export type RunSearch = {
   testError: () => void;
 };
 
-export type PropsResult = {
-  result: Result;
-  page: string;
+export interface IPropsResult {
+  result: Result,
+  page: string,
 };
 
 export type PropsPagination = {
