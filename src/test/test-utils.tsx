@@ -25,6 +25,8 @@ export function renderWithProviders(
     store = configureStore({
       reducer: { sw: swReducer, [swApi.reducerPath]: swApi.reducer },
       preloadedState,
+      middleware: (getDefaultMiddleware) =>
+        Array.from(getDefaultMiddleware().concat(swApi.middleware)),
     }),
     ...renderOptions
   }: ExtendedRenderOptions = {}

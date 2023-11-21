@@ -37,15 +37,15 @@ export function Details() {
     sectionDetais = [<CircleLoader color="#541068" size="150px" key="" />];
   } else {
     sectionDetais = [
-      <h3 key="">{`Name: ${person.name}`}</h3>,
-      <p key="">{`Birth year: ${person.birth_year}`}</p>,
-      <p key="">{`Height: ${person.height}`}</p>,
-      <p key="">{`Mass: ${person.mass}`}</p>,
-      <p key="">{`Skin color: ${person.skin_color}`}</p>,
-      <p key="">{`Hair color: ${person.hair_color}`}</p>,
-      <p key="">{`Eye color: ${person.eye_color}`}</p>,
-      <p key="">{`url: ${person.url}`}</p>,
-      <button onClick={() => setShowDetails(false)} key="">
+      <h3 key="0">{`Name: ${person.name}`}</h3>,
+      <p key="1">{`Birth year: ${person.birth_year}`}</p>,
+      <p key="2">{`Height: ${person.height}`}</p>,
+      <p key="3">{`Mass: ${person.mass}`}</p>,
+      <p key="4">{`Skin color: ${person.skin_color}`}</p>,
+      <p key="5">{`Hair color: ${person.hair_color}`}</p>,
+      <p key="6">{`Eye color: ${person.eye_color}`}</p>,
+      <p key="7">{`url: ${person.url}`}</p>,
+      <button onClick={() => setShowDetails(false)} key="8">
         Close
       </button>,
     ];

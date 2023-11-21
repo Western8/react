@@ -20,8 +20,8 @@ function People() {
   const page = useAppSelector((state) => state.sw.page);
   const inputValue = useAppSelector((state) => state.sw.inputValue);
   const { data, isFetching } = useGetResultsQuery({ page, inputValue });
-  console.log('data apiResults ', data);
-  console.log('isFetching', isFetching);
+  // console.log('data apiResults ', data);
+  // console.log('isFetching', isFetching);
   dispatch(setLoadingList(isFetching));
   let contResults: Result[] = [];
   if (!isFetching) {
