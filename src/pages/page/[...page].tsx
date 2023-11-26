@@ -1,25 +1,31 @@
 import { useRouter } from 'next/router';
+import type { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
 import Header from '../components/header/Header';
 import People from '../components/people/People';
+import ErrorBoundary from '../components/errorBoundary/ErrorBoundary';
+import { ApiResult } from '../types';
+import styles from '../../styles/Home.module.css';
 
 function testError(): void {
   throw new Error('Ooops... something went wrong.');
 }
 
-export const getServerSideProps = (async (context) => {
-  // console.log('!!!!!!!!!!!!!!!! context.query ', context.query);
-  const baseUrl = `https://swapi.dev/api/people/`;  
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const baseUrl = `https://swapi.dev/api/people/`;
   const params = context.query.page;
-  const page = params[0];
+  let page = '1';
   let inputValue = '';
-  const indSearch = params.indexOf('search');
-  if (indSearch !== -1) {
-    inputValue = params[indSearch + 1];
-  }
   let idPerson = '';
-  const indPersom = params.indexOf('person');
-  if (indPersom !== -1) {
-    idPerson = params[indPersom + 1];
+  if (params) {
+    page = params[0];
+    const indSearch = params.indexOf('search');
+    if (indSearch !== -1) {
+      inputValue = params[indSearch + 1];
+    }
+    const indPersom = params.indexOf('person');
+    if (indPersom !== -1) {
+      idPerson = params[indPersom + 1];
+    }
   }
 
   const urlParams: string[] = [];
@@ -31,9 +37,7 @@ export const getServerSideProps = (async (context) => {
   const url = `${baseUrl}${urlParamsStr}`;
 
   const res = await fetch(url);
-  const data = await res.json()
-  // console.log('!!!!!!!!!!!!!!!!!!!!!! url ', url);
-  // console.log('!!!!!!!!!!!!!!!!!!!!!! data ', data);
+  const data = await res.json();
 
   if (!data) {
     return {
@@ -56,9 +60,9 @@ export const getServerSideProps = (async (context) => {
       dataDetails,
     }
   };
-});
+};
 
-export default function Page({ page, inputValue, data, dataDetails }) {
+export default function Page({ page, inputValue, data, dataDetails }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter();
 
   const contResults = data.results.map((item: ApiResult) => {
@@ -70,9 +74,11 @@ export default function Page({ page, inputValue, data, dataDetails }) {
   });
 
   return (
-    <div className="home">
-      <Header testError={testError}></Header>
-      <People contResults={contResults} page={page} inputValue={inputValue} dataDetails={dataDetails} />
-    </div>
+    <ErrorBoundary>
+      <div className={styles.home}>
+        <Header testError={testError} children={[]}></Header>
+        <People contResults={contResults} page={page} inputValue={inputValue} dataDetails={dataDetails} />
+      </div>
+    </ErrorBoundary>
   )
 }

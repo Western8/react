@@ -1,9 +1,18 @@
 import React from 'react';
-import { Person } from '../../types';
+import { useRouter } from 'next/navigation';
+import { Person, IPropsDetails } from '../../types';
 import styles from '../../../styles/People.module.css';
 
-export function Details({ dataDetails }) {
-//  const setShowDetails: (showDetails: boolean) => void = useOutletContext();
+export function Details({ dataDetails, page, inputValue }: IPropsDetails) {
+  const { push } = useRouter();
+
+  function setShowDetails() {
+    let url = `/page/${page}`;
+    if (inputValue) {
+      url = `${url}/search/${inputValue}`;
+    }
+    push(url);
+  }
 
   const initPerson: Person = {
     url: '',
@@ -33,7 +42,7 @@ export function Details({ dataDetails }) {
     <p key="5">{`Hair color: ${person.hair_color}`}</p>,
     <p key="6">{`Eye color: ${person.eye_color}`}</p>,
     <p key="7">{`url: ${person.url}`}</p>,
-    <button onClick={() => setShowDetails(false)} key="8">
+    <button onClick={setShowDetails} key="8">
       Close
     </button>,
   ];

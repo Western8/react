@@ -1,11 +1,9 @@
 import React, { ChangeEvent } from 'react';
 import { useRouter } from 'next/navigation';
+import { IPropsHeader } from '../../types';
 import styles from '../../../styles/Header.module.css'
-import { RunSearch } from '../../types';
 
-
-//function Header(props: RunSearch) {
-function Header(props) {
+function Header(props: IPropsHeader) {
   const [stateLimit, setStateLimit] = React.useState('10');
 
   const inputValue = React.useRef<HTMLInputElement>(null);
@@ -22,7 +20,7 @@ function Header(props) {
   return (
     <div className={styles.header}>
       <input ref={inputValue} placeholder="Enter search text" />
-      <select ref={select} value={stateLimit} >
+      <select ref={select} value={stateLimit} className={styles.selector}>
         limit
         <option value="10">10</option>
         <option value="20">20</option>

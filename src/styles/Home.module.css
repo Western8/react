@@ -104,6 +104,12 @@
   transform: translateZ(0);
 }
 
+.home {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
 .logo {
   position: relative;
 }

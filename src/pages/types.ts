@@ -35,9 +35,35 @@ export type RunSearch = {
   testError: () => void;
 };
 
+export interface IPropsHeader {
+  testError: () => void;
+  children: JSX.Element[];
+}
+
+export interface IPropsPage {
+  page: string;
+  inputValue: string;
+  data: string;
+  dataDetails: ApiResult;
+}
+
+export interface IPropsPeople {
+  page: string;
+  inputValue: string;
+  contResults: Result[];
+  dataDetails: ApiResult;
+}
 export interface IPropsResult {
   result: Result;
   page: string;
+  inputValue: string;
+  dataDetails: ApiResult;
+}
+
+export interface IPropsDetails {
+  dataDetails: ApiResult;
+  page: string;
+  inputValue: string;
 }
 
 export interface IPropsPagination {

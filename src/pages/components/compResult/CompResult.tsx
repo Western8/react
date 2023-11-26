@@ -2,11 +2,13 @@ import { IPropsResult } from '../../types';
 import Link from 'next/link';
 import styles from '../../../styles/People.module.css';
 
-//function CompResult({ result, page, inputValue }: IPropsResult) {
-function CompResult({ result, page, inputValue }) {
+function CompResult({ result, page, inputValue, dataDetails }: IPropsResult) {
   const idPerson = result.url.split('/').at(-2);
 
-  let url = `/page/${page}/person/${idPerson}`;
+  let url = `/page/${page}`;
+  if (!dataDetails) {
+    url = `${url}/person/${idPerson}`;
+  }
   if (inputValue) {
     url = `${url}/search/${inputValue}`;
   }
