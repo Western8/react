@@ -26,7 +26,6 @@ export function Details({ dataDetails, page, inputValue }: IPropsDetails) {
     eye_color: '',
   };
   let person = initPerson;
-  // const [person] = React.useState(initPerson);
 
   if (dataDetails) {
     Object.assign(person, dataDetails);
