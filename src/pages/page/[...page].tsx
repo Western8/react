@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import type { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
 import Header from '../components/header/Header';
 import People from '../components/people/People';
@@ -63,8 +62,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 };
 
 export default function Page({ page, inputValue, data, dataDetails }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const router = useRouter();
-
   const contResults = data.results.map((item: ApiResult) => {
     return {
       name: item.name,
