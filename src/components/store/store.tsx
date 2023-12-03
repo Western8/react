@@ -1,18 +1,18 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import type { PreloadedState } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import swReducer from './swSlice';
+import reducer from './slice';
 
 const store = configureStore({
   reducer: {
-    sw: swReducer,
+    forms: reducer,
   },
   // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(swApi.middleware),
 });
 
 // Create the root reducer separately so we can extract the RootState type
 const rootReducer = combineReducers({
-  sw: swReducer,
+  forms: reducer,
 });
 
 export function setupStore(preloadedState?: PreloadedState<RootState>) {
