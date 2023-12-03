@@ -25,11 +25,11 @@ export enum Gender {
 }
 
 export enum Country {
-  Belarus,
-  France,
-  Italy,
-  Poland,
-  Sweden,
-  UK,
-  USA,
+  Belarus = 'Belarus',
+  France = 'France',
+  Italy = 'Italy',
+  Poland = 'Poland',
+  Sweden = 'Sweden',
+  UK = 'UK',
+  USA = 'USA',
 }

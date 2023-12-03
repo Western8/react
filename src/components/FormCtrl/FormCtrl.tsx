@@ -50,7 +50,7 @@ const FormCtrl: React.FC = () => {
         </div>
         <div className="input-email">
           <label htmlFor="email">E-mail</label>
-          <input id="email" type="email" {...register("email")} />
+          <input id="email" type="text" {...register("email")} />
           <p>{errors.email?.message}</p>
         </div>
         <div className="input-password1">
