@@ -7,7 +7,6 @@ const store = configureStore({
   reducer: {
     forms: reducer,
   },
-  // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(swApi.middleware),
 });
 
 // Create the root reducer separately so we can extract the RootState type

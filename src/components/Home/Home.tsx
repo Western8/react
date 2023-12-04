@@ -1,4 +1,4 @@
-//import './Home.css';
+import './Home.css';
 import { Link } from 'react-router-dom';
 import DataList from '../DataList/DataList';
 
@@ -13,7 +13,7 @@ function Home() {
           Controlled form
         </Link>
       </nav>
-      <DataList/>
+      <DataList />
     </div>
   );
 }

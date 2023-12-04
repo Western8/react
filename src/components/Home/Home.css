@@ -1,0 +1,16 @@
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  font-size: 26px;
+}
+
+.link {
+  padding: 10px;
+  border: 1px solid #0e119e;
+}
+
+.link:hover {
+  background-color: rgb(235, 137, 222);
+}

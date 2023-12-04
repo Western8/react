@@ -21,14 +21,12 @@ const slice = createSlice({
         accept: action.payload.dataItem.accept,
         img: action.payload.dataItem.img,
         country: action.payload.dataItem.country,
-      }
+      };
       state.dataList.push(dataItem);
     },
   },
 });
 
-export const {
-  setDataList,
-} = slice.actions;
+export const { setDataList } = slice.actions;
 
 export default slice.reducer;
