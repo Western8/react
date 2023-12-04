@@ -20,8 +20,8 @@ export interface IData {
 }
 
 export enum Gender {
-  Male = 'male',
-  Female = 'female',
+  male = 'male',
+  female = 'female',
 }
 
 export enum Country {

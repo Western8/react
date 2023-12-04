@@ -8,28 +8,34 @@ import schema from "../../yup";
 
 function FormUnctrl() {
   const dispatch = useAppDispatch();
-  const [errors, setErrors] = useState({ 
-    name: { message: null },
-    age: { message: null },
-    email: { message: null },
-    password1: { message: null },
-    password2: { message: null },
-    gender: { message: null },
-    accept: { message: null },
-    img: { message: null },
-    country: { message: null },
-  });
+  const initErrors = { 
+    name: { message: '' },
+    age: { message: '' },
+    email: { message: '' },
+    password1: { message: '' },
+    password2: { message: '' },
+    gender: { message: '' },
+    accept: { message: '' },
+    img: { message: '' },
+    country: { message: '' },
+  }
+  const [errors, setErrors] = useState(initErrors);
+  const [gender, setGender] = useState('male');
   const refName = React.useRef<HTMLInputElement>(null);
   const refAge = React.useRef<HTMLInputElement>(null);
   const refEmail = React.useRef<HTMLInputElement>(null);
   const refPassword1 = React.useRef<HTMLInputElement>(null);
   const refPassword2 = React.useRef<HTMLInputElement>(null);
-  const refGender = React.useRef<HTMLInputElement>(null);
+ // const refGender = React.useRef<HTMLInputElement>(null);
   const refAccept = React.useRef<HTMLInputElement>(null);
   const refImg = React.useRef<HTMLInputElement>(null);
   const refCountry = React.useRef<HTMLInputElement>(null);
 
   const navigate = useNavigate();
+
+  function changeGender(e: React.ChangeEvent<HTMLInputElement>) {
+    setGender(e.currentTarget.value);
+  }
 
   async function handleSubmit() {
     const dataItem: IDataItem = {
@@ -58,9 +64,12 @@ function FormUnctrl() {
     if (refPassword2.current) {
       dataItem.password2 = refPassword2.current.value;
     }
+    dataItem.gender = Gender[gender as keyof typeof Gender];
+    /*
     if (refGender.current) {
       dataItem.gender = Gender[refGender.current.value as keyof typeof Gender];
     }
+    */
     if (refAccept.current) {
       dataItem.accept = Boolean(refAccept.current.value);
     }
@@ -68,9 +77,16 @@ function FormUnctrl() {
       dataItem.country = Country[refCountry.current.value as keyof typeof Country];
     }
 
-    const errorsYup = schema.validateSync(dataItem);
-    setErrors(errorsYup);
-    if (errorsYup) {
+    try {
+      await schema.validate(dataItem, {abortEarly: false});
+    } catch(err) {
+      const errorsYup = initErrors;
+      err.inner.forEach((item) => {
+        errorsYup[item.path] = { message: item.message };
+    });
+      
+      // errorsYup.email.message = '1111111111111!!!!';
+      setErrors(errorsYup);
       return;
     }
     dispatch(setDataList({ dataItem }));
@@ -108,9 +124,9 @@ function FormUnctrl() {
         </div>
         <div className="input-gender">Gender
           <label htmlFor="gender-male">male</label>
-          <input id="gender-male" type="radio" name="gender" value="male" checked={true} ref={refGender} />
+          <input id="gender-male" type="radio" name="gender" value="male" checked={(gender ==='male')} onChange={(e) => changeGender(e)}/>
           <label htmlFor="gender-female">female</label>
-          <input id="gender-female" type="radio" name="gender" value="female" ref={refGender} />
+          <input id="gender-female" type="radio" name="gender" value="female" checked={(gender ==='female')} onChange={(e) => changeGender(e)}/>
           <p>{errors.gender && errors.gender?.message}</p>
         </div>
         <div className="input-accept">
@@ -120,7 +136,7 @@ function FormUnctrl() {
         </div>
         <div className="input-img">
           <label htmlFor="img">Image</label>
-          <input id="img" type="image" ref={refImg} />
+          <input id="img" type="file" ref={refImg} />
           <p>{errors.img && errors.img?.message}</p>
         </div>
         <div className="input-country">

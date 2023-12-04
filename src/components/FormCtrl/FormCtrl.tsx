@@ -77,7 +77,7 @@ const FormCtrl: React.FC = () => {
         </div>
         <div className="input-img">
           <label htmlFor="img">Image</label>
-          <input id="img" type="image" {...register("img")} />
+          <input id="img" type="file" {...register("img")} />
           <p>{errors.img?.message}</p>
         </div>
         <div className="input-country">
