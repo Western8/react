@@ -12,7 +12,6 @@ function Data({ data, last }: IDataProps) {
       <p>Gender: {data.gender}</p>
       <p>Accept T&C: {data.accept.toString()}</p>
       <p>
-        {/* Image: <img src={`data:image/jpeg;base64,${data.img}`} /> */}
         Image: <img src={`${data.img}`} />
       </p>
       <p>Country: {data.country}</p>

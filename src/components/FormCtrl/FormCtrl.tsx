@@ -1,5 +1,4 @@
 import './FormCtrl.css';
-//import React, { useState } from 'react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { IDataItem } from '../../types';
@@ -12,28 +11,12 @@ import schema from '../../yup';
 const FormCtrl: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  //const [img64, setImg64] = useState('');
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IDataItem>({ resolver: yupResolver(schema) });
-
-  /*
-  function changeImg(e: React.ChangeEvent<HTMLInputElement>) {
-    if (e.currentTarget.files) {
-      const file = e.currentTarget.files[0];
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = function () {
-        if (reader.result) {
-          setImg64(reader.result.toString());
-        }
-      };
-    }
-  }
-  */
 
   const onSubmit = (data: IDataItem) => {
     const dataItem: IDataItem = {
@@ -95,7 +78,6 @@ const FormCtrl: React.FC = () => {
         </div>
         <div className="input-img">
           <label htmlFor="img">Image</label>
-          {/* <input id="img" type="file" onChange={(e) => changeImg(e)} /> */}
           <input id="img" type="file" {...register('img')} />
           <p>{errors.img?.message}</p>
         </div>
