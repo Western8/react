@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../store/hooks';
 import { setDataList } from '../store/slice';
-import { IDataItem, Gender, Country, IErrors } from '../../types';
+import { IDataItem, Gender, IErrors, countries } from '../../types';
 import schema from '../../yup';
 import * as yup from 'yup';
 
@@ -61,7 +61,7 @@ function FormUnctrl() {
       gender: Gender.male,
       accept: false,
       img: '',
-      country: Country.Belarus,
+      country: '',
     };
     if (refName.current) {
       dataItem.name = refName.current.value;
@@ -82,7 +82,7 @@ function FormUnctrl() {
       dataItem.accept = Boolean(refAccept.current.value);
     }
     if (refCountry.current) {
-      dataItem.country = Country[refCountry.current.value as keyof typeof Country];
+      dataItem.country = refCountry.current.value;
     }
     dataItem.gender = Gender[gender as keyof typeof Gender];
     dataItem.img = img64;
@@ -102,6 +102,15 @@ function FormUnctrl() {
     dispatch(setDataList({ dataItem }));
     navigate('/', { replace: true });
   }
+
+  let countrylist: JSX.Element[] = [<></>];
+  countrylist = countries.map((item) => {
+    return (
+      <option key={item} value={item}>
+        {item}
+      </option>
+    );
+  });
 
   return (
     <div className="form">
@@ -166,7 +175,8 @@ function FormUnctrl() {
         </div>
         <div className="input-country">
           <label htmlFor="country">Country</label>
-          <input id="country" type="string" ref={refCountry} />
+          <input id="country" type="text" list="countrylist" ref={refCountry} />
+          <datalist id="countrylist">{countrylist}</datalist>
           <p>{errors.country && errors.country?.message}</p>
         </div>
         <button type="button" onClick={handleSubmit}>

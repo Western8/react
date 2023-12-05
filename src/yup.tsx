@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import { countries } from './types';
 
 const schema = yup.object().shape({
   name: yup
@@ -21,7 +22,12 @@ const schema = yup.object().shape({
   gender: yup.string().required('Gender is a required field'),
   accept: yup.boolean().required('Accept T&C is a required field'),
   img: yup.string().required('Image is necessary to upload'),
-  country: yup.string().required('Country is a required field'),
+  country: yup
+    .string()
+    .required('Country is a required field')
+    .test('country', 'Not valid country name', (value) => {
+      return Boolean(countries.find((item) => item === value));
+    }),
 });
 
 export default schema;

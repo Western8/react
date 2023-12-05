@@ -1,7 +1,7 @@
 import './FormCtrl.css';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { IDataItem } from '../../types';
+import { IDataItem, countries } from '../../types';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../store/hooks';
 import { setDataList } from '../store/slice';
@@ -33,6 +33,15 @@ const FormCtrl: React.FC = () => {
     dispatch(setDataList({ dataItem }));
     navigate('/', { replace: true });
   };
+
+  let countrylist: JSX.Element[] = [<></>];
+  countrylist = countries.map((item) => {
+    return (
+      <option key={item} value={item}>
+        {item}
+      </option>
+    );
+  });
 
   return (
     <div className="form">
@@ -83,7 +92,8 @@ const FormCtrl: React.FC = () => {
         </div>
         <div className="input-country">
           <label htmlFor="country">Country</label>
-          <input id="country" type="string" {...register('country')} />
+          <input id="country" type="text" list="countrylist" {...register('country')} />
+          <datalist id="countrylist">{countrylist}</datalist>
           <p>{errors.country?.message}</p>
         </div>
         <input type="submit" />
