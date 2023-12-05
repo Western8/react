@@ -23,6 +23,7 @@ function FormUnctrl() {
   const [errors, setErrors] = useState(initErrors);
   const [gender, setGender] = useState('male');
   const [img64, setImg64] = useState('');
+  const [update, setUpdate] = useState(true);
   const refName = React.useRef<HTMLInputElement>(null);
   const refAge = React.useRef<HTMLInputElement>(null);
   const refEmail = React.useRef<HTMLInputElement>(null);
@@ -96,6 +97,7 @@ function FormUnctrl() {
           errorsYup[item.path as keyof typeof errorsYup] = { message: item.message };
         });
         setErrors(errorsYup);
+        setUpdate(!update);
       }
       return;
     }
